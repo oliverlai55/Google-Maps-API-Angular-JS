@@ -3,7 +3,7 @@
 <head>
 	<title>Google Maps - Angular Style</title>
 
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="assets/css/styles.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 	
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
@@ -11,8 +11,16 @@
 	<script type="text/javascript" src="cities.js"></script>
 	<script type="text/javascript" src="controller.js"></script>
 </head>
-<body ng-controller="mapCtrl">
+
+<body ng-controller="mapCtrl"> 
+<!-- controller now has control over this ng-controller part -->
 	<div id="map"></div>	
+
+	<div id="list-window">
+		<div class="city" ng-repeat="city in cities">
+			{{city.yearRank}} : {{city.city}}
+		</div>
+	</div>
 	
 </body>
 </html>
