@@ -1,0 +1,22 @@
+.blog-wrapper{
+	margin: 3% 15%;
+}
+
+#carousel-example-generic{
+	margin-bottom: 3%;
+	width:49%;
+	margin: 25px auto;
+}
+.nav .home{
+	padding-left: 0px;
+}
+
+@media (min-width: 768px) {
+	.dropdown:hover .dropdown-menu {
+		display: block;
+	}
+}
+
+li .dropdown-toggle{
+	margin-top: 4%;
+}
