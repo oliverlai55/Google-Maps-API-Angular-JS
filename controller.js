@@ -24,11 +24,19 @@ angular.module('myApp',[]).controller('mapCtrl',function($scope){
 		console.log(lat);
 		console.log(lon);
 
+		if(index == 0){
+			var icon = '1.png';
+		}else if (index == 38){
+			var icon = 'atl.png';
+		}else {
+			var icon = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2%7CFE7569'
+		}
+
 		var marker = new google.maps.Marker({
 			map: $scope.map,
 			position: new google.maps.LatLng(lat, lon),
 			title: city.city,
-			icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2%7CFE7569'
+			icon: icon
 		});
 
 	   markerContentHTML = '<div class="infoWindowContent">';
@@ -54,6 +62,16 @@ angular.module('myApp',[]).controller('mapCtrl',function($scope){
 	$scope.triggerClick = function(i){
 		google.maps.event.trigger($scope.markers[i-1],"click")
 	}
+
+
+	$scope.updateMarkers = function(){
+		for(i=0; i < $scope.markers.length; i++){
+			$scope.markers[i].setMap(null);
+		}
+		for(i = 0; i < $scope.filteredCities.length; i++){
+		createMarker($scope.filteredCities[i],i);
+	}
+}
 
 	getDirections = function(lat, lon){
 		var directionsService = new google.maps.DirectionsService();

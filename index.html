@@ -17,11 +17,15 @@
 	<div id="map"></div>	
 
 	<div id="list-window">
-		<div class="city" ng-repeat="city in cities">
-			{{city.yearRank}} : {{city.city}}	
-			<a class="btn btn-primary sm" href="" ng-click="triggerClick(city.yearRank)">Show Info
-			</a>
-		</div>
+		<form ng-submit="updateMarkers(searchString)">
+			<input id="filter-input" ng-model="searchString" type="text">
+			<input type="submit" value="Update Map">
+			<div class="city" ng-repeat="city in (filteredCities = (cities | filter: searchString))">
+				{{city.yearRank}} : {{city.city}}	
+				<a class="btn btn-primary sm" href="" ng-click="triggerClick(city.yearRank)">Show Info
+				</a>
+			</div>
+		</form>
 	</div>
 	<div id="map-panel"></div>
 
